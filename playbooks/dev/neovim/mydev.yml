@@ -1,0 +1,10 @@
+- name: Generate My Development
+  hosts: dev
+  environment: "{{ env_vars|default({}) }}"
+  #environment:
+    #https_proxy: "http://your-proxy:8080"
+    #http_proxy: "http://your-proxy:8080"
+  gather_facts: no
+  tasks:
+    - import_role:
+        name: gen.mydevelopment

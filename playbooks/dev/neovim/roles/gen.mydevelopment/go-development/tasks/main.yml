@@ -1,0 +1,15 @@
+---
+
+- name: install go tools
+  dnf:
+    name: "{{ item }}"
+    state: installed
+    enablerepo: epel
+  with_items:
+    - go
+    - golang-x-tools-gopls
+
+- name: install delve
+  command: "{{ item }}"
+  with_items:
+    - "go install github.com/go-delve/delve/cmd/dlv@{{ dlv_version }}"

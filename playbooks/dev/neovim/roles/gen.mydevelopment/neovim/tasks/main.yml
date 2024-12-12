@@ -1,0 +1,9 @@
+---
+- name: install neovim
+  command: "{{ item }}"
+  with_items:
+    - "curl https://github.com/neovim/neovim/releases/download/{{ neovim_version }}/nvim-linux64.tar.gz -L -o /tmp/nvim-linux64.tar.gz"
+    - "dnf -y install tar"
+    - "tar xzvf /tmp/nvim-linux64.tar.gz -C /tmp/"
+    - "sudo mv /tmp/nvim-linux64/bin/nvim /usr/local/bin"
+    - "sudo cp -r /tmp/nvim-linux64/share/nvim /usr/share"

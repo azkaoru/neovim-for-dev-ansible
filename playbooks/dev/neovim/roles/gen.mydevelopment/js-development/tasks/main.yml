@@ -1,0 +1,6 @@
+---
+- name: update nodejs
+  command: "{{ item }}"
+  with_items:
+    - "sudo yum remove -y nodejs npm"
+    - "sudo dnf module install -y nodejs:{{ nodejs_version }}"

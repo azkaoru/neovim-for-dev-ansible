@@ -1,0 +1,8 @@
+---
+neovim_version: "v0.10.2"
+gh_version: "2.63.2"
+dlv_version: "v1.23.1"
+yamlfmt_version: "0.14.0"
+shfmt_version: "v3.6.0"
+lua_ls_version: "3.13.3"
+nodejs_version: "18"

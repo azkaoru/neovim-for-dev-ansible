@@ -1,0 +1,15 @@
+---
+
+- name: install tools for ansible
+  command: "pip3.11 install {{ item }}"
+  with_items:
+    - "ansible-lint"
+    - "yamllint"
+    - "ansibug"
+
+- name: install yamlfmt
+  command: "{{ item }}"
+  with_items:
+    - "curl https://github.com/google/yamlfmt/releases/download/v{{ yamlfmt_version }}/yamlfmt_{{ yamlfmt_version }}_Linux_x86_64.tar.gz -L -o /tmp/yamlfmt_{{ yamlfmt_version }}.tar.gz"
+    - "tar zxvf /tmp/yamlfmt_{{ yamlfmt_version }}.tar.gz -C /tmp"
+    - "sudo mv /tmp/yamlfmt /usr/local/bin"

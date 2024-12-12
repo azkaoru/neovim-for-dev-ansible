@@ -1,0 +1,23 @@
+---
+dependencies:
+  - role: gen.mydevelopment/plugins-requirement
+    tags:
+      - plugins
+  - role: gen.mydevelopment/shell-development
+    tags:
+      - shell
+  - role: gen.mydevelopment/lua-development
+    tags:
+      - lua
+  - role: gen.mydevelopment/go-development
+    tags:
+      - go
+  - role: gen.mydevelopment/js-development
+    tags:
+      - js
+  - role: gen.mydevelopment/ansible-development
+    tags:
+      - ansible
+  - role: gen.mydevelopment/neovim
+    tags:
+      - neovim

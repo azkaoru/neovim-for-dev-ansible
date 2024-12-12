@@ -1,0 +1,45 @@
+---
+- name: install epel
+  command: "{{ item }}"
+  with_items:
+    - "dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm"
+
+# tasks file for neovim plugins
+#
+- name: install package for neovim
+  dnf:
+    name: "{{ item }}"
+    state: installed
+    enablerepo: epel
+  with_items:
+    - xclip
+    - xsel
+    - stow
+    - fd-find
+    - fontconfig
+    - gcc
+
+- name: install ripgrep(rg)
+  command: "{{ item }}"
+  with_items:
+    - "curl https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo -o /tmp/carlwgeorge-ripgrep-epel-7.repo"
+    - "sudo mv /tmp/carlwgeorge-ripgrep-epel-7.repo /etc/yum.repos.d/"
+    - "dnf install -y ripgrep"
+
+- name: install fonts go-mono
+  command: "{{ item }}"
+  with_items:
+    - "curl https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/Go-Mono.zip -L -o /tmp/Go-Mono.zip"
+    - "sudo mkdir -p /usr/share/fonts/go-mono"
+    - "dnf install -y unzip"
+    - "sudo unzip -f /tmp/Go-Mono.zip -d /usr/share/fonts/go-mono"
+    - "sudo fc-cache -v"
+
+- name: install gh command
+  command: "{{ item }}"
+  with_items:
+    - "curl https://github.com/cli/cli/releases/download/v{{ gh_version }}/gh_{{ gh_version }}_linux_amd64.tar.gz -L -o /tmp/gh_{{ gh_version }}_linux_amd64.tar.gz"
+    - "dnf install -y tar"
+    - "tar zxvf /tmp/gh_{{ gh_version }}_linux_amd64.tar.gz -C /tmp/"
+    - "sudo mv /tmp/gh_{{ gh_version }}_linux_amd64/bin/gh /usr/local/bin/"
+    - "sudo chmod +x /usr/local/bin/gh"
