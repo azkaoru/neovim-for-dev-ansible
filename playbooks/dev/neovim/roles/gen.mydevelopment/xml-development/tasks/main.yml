@@ -1,0 +1,6 @@
+---
+- name: install prettierd prettier-plugin-xml
+  command: "{{ item }}"
+  with_items:
+    - "yarn global add prettier prettier-plugin-xml"
+

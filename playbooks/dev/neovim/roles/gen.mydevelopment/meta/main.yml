@@ -6,6 +6,9 @@ dependencies:
   - role: gen.mydevelopment/shell-development
     tags:
       - shell
+  - role: gen.mydevelopment/xml-development
+    tags:
+      - xml
   - role: gen.mydevelopment/lua-development
     tags:
       - lua
